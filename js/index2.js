@@ -2,8 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.querySelector("#canvas");
     const ctx = canvas.getContext("2d");
 
+    function clearBoard() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+
     const btnCrearGrillas = document.querySelector("#crearGrillas");
     btnCrearGrillas.addEventListener("click", () => {
+        clearBoard();
         const distanciaX = 20;
         const distanciaY = 20;
         const colorLinea = "red";
@@ -31,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const btnCrearEventos = document.querySelector("#crearEventos");
     btnCrearEventos.addEventListener("click", () => {
+        clearBoard();
         // Adicionando el mouse move
         canvas.addEventListener("mousemove", evt => {
             // const posicionReal = canvas.getBoundingClientRect();
@@ -56,26 +60,31 @@ document.addEventListener("DOMContentLoaded", () => {
     let posicionFinal = {}; // mouseup
     let isDrawing = false;
     btnDibujar.addEventListener("click", () => {
+        clearBoard();
         canvas.addEventListener("mousemove", evt => {
             if(!isDrawing) { return; }
             const posicionReal = canvas.getBoundingClientRect();
             const x = evt.clientX - posicionReal.left;
             const y = evt.clientY - posicionReal.top;
-            posicionInicial = {
-                x: x - 2,
-                y: y - 2
-            }
-            posicionFinal = {
-                x,
-                y
-            }
+            posicionFinal = { x, y };
+
             ctx.beginPath();
             ctx.moveTo(posicionInicial.x, posicionInicial.y);
             ctx.lineTo(posicionFinal.x, posicionFinal.y);
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = "#F0F";
             ctx.stroke();
             ctx.closePath();
+
+            posicionInicial.x = posicionFinal.x;
+            posicionInicial.y = posicionFinal.y;
         });
         canvas.addEventListener("mousedown", evt => {
+            isDrawing = true;
+            const posicionReal = canvas.getBoundingClientRect();
+            const x = evt.clientX - posicionReal.left;
+            const y = evt.clientY - posicionReal.top;
+            posicionInicial = { x, y };
             /* const posicionReal = canvas.getBoundingClientRect();
             const x = evt.clientX - posicionReal.left;
             const y = evt.clientY - posicionReal.top;
@@ -83,9 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 x,
                 y
             } */
-            isDrawing = true;
         });
         canvas.addEventListener("mouseup", evt => {
+            isDrawing = false;
             /* const posicionReal = canvas.getBoundingClientRect();
             const x = evt.clientX - posicionReal.left;
             const y = evt.clientY - posicionReal.top;
@@ -98,7 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.lineTo(posicionFinal.x, posicionFinal.y);
             ctx.stroke();
             ctx.closePath(); */
-            isDrawing = false;
         });
     });
 });
