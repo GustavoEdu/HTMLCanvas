@@ -109,4 +109,48 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.closePath(); */
         });
     });
+
+    const btnEmbeberImagen = document.querySelector("#fondoCanvas");
+    btnEmbeberImagen.addEventListener("click", () => {
+        // Obteniendo imagen dentro del canvas
+        const imagen = new Image();
+        // imagen.src = "https://d.newsweek.com/en/full/1969919/galaxy.jpg?w=790&f=a3f246bcd239e5b13894d1a34af25c71";
+        imagen.src = "../img/michicraft.jfif";
+        imagen.onload = () => {
+            // Ya sabemos que la imagen se descargó completamente
+            ctx.drawImage(imagen, 0, 0, 400, 400);
+            const w = imagen.width; // 400
+            const h = imagen.height; // 400
+
+            const imageData = ctx.getImageData(0, 0, w, h);
+            const data = imageData.data;
+            const DIFFERENTIAL = -50; // No va a sobrepasar 255 o disminuir de 0
+            /* for(let i = 0; i < data.length; i += 4) {
+                data[i] += DIFFERENTIAL; // Red
+                data[i + 1] += DIFFERENTIAL; // Green
+                data[i + 2] += DIFFERENTIAL; // Blue
+            } */
+            /* // Blanco y Negro
+            for(let i = 0; i < data.length; i += 4) {
+                const promedio = (data[i] + data[i + 1] + data[i + 2]) / 3;
+                data[i] = promedio; // Red
+                data[i + 1] = promedio; // Green
+                data[i + 2] = promedio; // Blue
+            } */
+            // Inverso
+            for(let i = 0; i < data.length; i += 4) {
+                data[i] = 255 - data[i]; // Red
+                data[i + 1] = 255 - data[i + 1]; // Green
+                data[i + 2] = 255 - data[i + 2]; // Blue
+            }
+            ctx.putImageData(imageData, 0, 0);
+        }
+    });
+
+    const btnCrearTexto = document.querySelector("#textos");
+    btnCrearTexto.addEventListener("click", () => {
+        clearBoard();
+        ctx.font = "25px Arial";
+        ctx.fillText("Texto en Canvas", 10, 100);
+    });
 });

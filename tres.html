@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <link rel="stylesheet" href="./css/styles.css">
-    <script src="./js/index.js"></script>
+    <script defer src="./js/index3.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -23,7 +23,7 @@
                 <div class="mdl-layout-spacer"></div>
                 <!-- Navigation. We hide it in small screens. -->
                 <nav class="mdl-navigation mdl-layout--large-screen-only">
-                    <a class="mdl-navigation__link" href="uno.html">Módulo 1</a>
+                    <a class="mdl-navigation__link" href="index.html">Módulo 1</a>
                     <a class="mdl-navigation__link" href="dos.html">Módulo 2</a>
                     <a class="mdl-navigation__link" href="tres.html">Módulo 3</a>
                     <a class="mdl-navigation__link" href="cuatro.html">Módulo 4</a>
@@ -33,7 +33,7 @@
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title">Canvas</span>
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="uno.html">Módulo 1</a>
+                <a class="mdl-navigation__link" href="index.html">Módulo 1</a>
                 <a class="mdl-navigation__link" href="dos.html">Módulo 2</a>
                 <a class="mdl-navigation__link" href="tres.html">Módulo 3</a>
                 <a class="mdl-navigation__link" href="cuatro.html">Módulo 4</a>
@@ -42,27 +42,16 @@
         <main class="mdl-layout__content">
             <div class="page-content">
                 <div class="buttons">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="crearLineas">
-                        Crear Línea
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="crearColision">
+                        Colisión
                     </button>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="crearArcos">
-                        Crear Arco
-                    </button>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="crearCurvasCuadraticas">
-                        Crear Curvas Cuadráticas
-                    </button>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="crearCurvasBezier">
-                        Crear Curvas Bezier
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="crearAnimacion">
+                        Animación
                     </button>
                 </div>
-                <canvas id="canvas" width="400" height="400">
+                <canvas id="canvas" width="300" height="300">
                     Tu navegador no soporta Canvas 😥
                 </canvas>
-                <!-- Fallback Content
-                <curso>
-                    Tu navegador no soporta Canvas 😥
-                </curso>
-                -->
             </div>
         </main>
     </div>
