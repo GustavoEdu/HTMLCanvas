@@ -37,7 +37,7 @@ window.addEventListener("keyup", function(evt) {
     if(hayColision(distanciaLeft, distanciaTop)) {
         isGameOver = true;
         const imagenGameOver = new Image();
-        imagenGameOver.src = "/img/gameover.jpg";
+        imagenGameOver.src = "../img/gameover.jpg";
         imagenGameOver.onload = function() {
             limpiarCanvas();
             ctx.drawImage(imagenGameOver, 0, 0, canvas.clientWidth, canvas.height);
